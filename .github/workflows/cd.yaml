@@ -1,6 +1,6 @@
 name: CD
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       component_id:
         description: "component_id"
