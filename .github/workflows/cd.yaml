@@ -1,7 +1,17 @@
 name: CD
 on:
-    push:
-        branches: [main]
+  push:
+    branches: [main]  
+  workflow_dispatch:
+    inputs:
+      component_id:
+        description: "component_id"
+        required: true  
+        type: string
+      repository:
+        description: "repository"
+        required: true  
+        type: string
 
 jobs: 
   build: 
