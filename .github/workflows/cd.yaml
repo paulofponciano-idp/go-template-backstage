@@ -1,6 +1,6 @@
 name: CD
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       component_id:
         description: "component_id"
@@ -30,7 +30,7 @@ jobs:
         with: 
           context: .
           push: true
-          tags: paulofponciano/${{ github.event.inputs.component_id }}:${{ github.sha }}, paulofponciano/${{ github.event.inputs.component_id }}:latest
+          tags: paulofponciano/${{ inputs.component_id }}:${{ github.sha }}, paulofponciano/${{ inputs.component_id }}:latest
 
   deploy:
     name: Deploy
@@ -50,8 +50,8 @@ jobs:
     
       - name: update k8s
         run: |
-          cd deployed_apps/${{ github.event.inputs.repository }}/overlays
-          kustomize edit set image webgo=paulofponciano/${{ github.event.inputs.repository }}:${{ github.sha }}
+          cd deployed_apps/${{ inputs.repository }}/overlays
+          kustomize edit set image webgo=paulofponciano/${{ inputs.repository }}:${{ github.sha }}
           cat kustomization.yaml
 
       - name: commit
