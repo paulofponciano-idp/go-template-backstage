@@ -1,0 +1,17 @@
+name: First Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  env:
+    uses: paulofponciano-idp/.github/.github/workflows/env.yaml@main
+
+  build-and-deploy:
+    uses: paulofponciano-idp/.github/.github/workflows/go-app.yaml@main
+    secrets: inherit
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+      repository: ${{ needs.env.outputs.repository }}
+    needs:
+      - env
