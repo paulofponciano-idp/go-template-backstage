@@ -14,6 +14,17 @@ jobs:
   env:
     uses: paulofponciano-idp/.github/.github/workflows/env.yaml@main
 
+  build:
+    uses: paulofponciano-idp/.github/.github/workflows/build.yaml@main
+    secrets: inherit
+    with:
+      tag: ${{ needs.env.outputs.tag }}
+      repository: ${{ needs.env.outputs.repository }}
+      url: https://${{ needs.env.outputs.repository }}.pauloponciano.digital
+      environment: production
+    needs:
+      - env
+
   deploy:
     uses: paulofponciano-idp/.github/.github/workflows/deploy.yaml@main
     secrets: inherit
@@ -24,3 +35,4 @@ jobs:
       environment: production
     needs:
       - env
+      - build
