@@ -4,7 +4,7 @@ spec:
   system: ${{values.system | dump}}
   type:  ${{values.type | dump}}
   lifecycle: ${{values.lifecycle | dump}}
-  owner: "sre" # fix it
+  owner:  ${{values.owner | dump}}
 metadata:
   name: ${{values.component_id | dump}}
   annotations:
