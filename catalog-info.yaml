@@ -18,6 +18,6 @@ metadata:
     - ${{ values.type | dump}}
     - ${{ values.lifecycle | dump}}
   links:
-    - url: https://${{values.component_id}}.${{ values.kubernetes.network.domain }}
+    - url: https://${{values.component_id}}.pauloponciano.digital
       title: Website
       icon: Website
