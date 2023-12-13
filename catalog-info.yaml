@@ -14,7 +14,6 @@ metadata:
     backstage.io/kubernetes-id: ${{values.component_id | dump}}
   tags:
     - golang
-    # - ${{ values.system }}
     - ${{ values.type | dump}}
     - ${{ values.lifecycle | dump}}
   links:
